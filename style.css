@@ -121,6 +121,7 @@ h1 {
 
 .no.dodging {
   position: fixed;
+  z-index: 10;
   transition: top 0.25s ease, left 0.25s ease;
 }
 
