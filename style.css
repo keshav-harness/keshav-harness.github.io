@@ -267,6 +267,33 @@ li {
   border-left-color: var(--accent-hot);
 }
 
+.highlight-block.success {
+  border-left-color: #10b981;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  background: rgba(76, 201, 240, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(76, 201, 240, 0.3);
+}
+
+.badge.gold {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.badge.pink {
+  background: rgba(247, 37, 133, 0.15);
+  color: var(--accent-hot);
+  border-color: rgba(247, 37, 133, 0.3);
+}
+
 /* Strong in tables */
 td strong {
   color: var(--accent);
