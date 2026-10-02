@@ -16,32 +16,39 @@
       <span class="current">Gym & Strength</span>
     </nav>
 
-    <h1>Gym & Strength Training</h1>
-    <p class="subtitle">Progressive overload, lean hypertrophy, and core stability to support running performance.</p>
+    <div class="hero-compact">
+      <button type="button" class="avatar-btn lightbox-trigger" aria-label="Open photo of Keshav Bathla" title="Click to view full photo">
+        <img src="../../assets/avatar.jpg" alt="Keshav Bathla" class="avatar-img">
+      </button>
+      <div class="hero-compact-info">
+        <h1>Gym &amp; Strength Training</h1>
+        <p class="subtitle">Progressive overload, lean hypertrophy, and core stability to support running performance.</p>
+      </div>
+    </div>
 
     <div class="stats-grid">
       <div class="stat">
-        <div class="stat-value">24</div>
+        <div class="stat-value"><span class="stat-num">24</span></div>
         <div class="stat-label">Total Sessions (2026)</div>
       </div>
       <div class="stat">
-        <div class="stat-value">14</div>
+        <div class="stat-value"><span class="stat-num">14</span></div>
         <div class="stat-label">Sessions in Sept</div>
       </div>
       <div class="stat">
-        <div class="stat-value">26.0 hrs</div>
+        <div class="stat-value"><span class="stat-num">26.0</span> <span class="stat-unit">hrs</span></div>
         <div class="stat-label">Time Under Tension</div>
       </div>
       <div class="stat">
-        <div class="stat-value">67.0 kg</div>
+        <div class="stat-value"><span class="stat-num">67.0</span> <span class="stat-unit">kg</span></div>
         <div class="stat-label">Current Weight (-2 kg)</div>
       </div>
       <div class="stat">
-        <div class="stat-value">69 min</div>
+        <div class="stat-value"><span class="stat-num">69</span> <span class="stat-unit">min</span></div>
         <div class="stat-label">Avg Session Duration</div>
       </div>
       <div class="stat">
-        <div class="stat-value">PPL + Upper</div>
+        <div class="stat-value"><span class="stat-num">PPL</span> <span class="stat-unit">+ Upper</span></div>
         <div class="stat-label">Active Workout Split</div>
       </div>
     </div>
@@ -215,8 +222,55 @@
     </div>
 
     <div class="footer">
-      <p><a href="../">← Back to Sports</a></p>
+      <p><a href="../">&larr; Back to Sports</a></p>
     </div>
   </div>
+
+  <dialog id="photo-modal" class="lightbox-modal">
+    <div class="modal-wrapper">
+      <button type="button" class="modal-close-btn" id="close-modal" aria-label="Close photo preview">&times;</button>
+      <div class="modal-image-container">
+        <img src="../../assets/keshav.jpg" alt="Keshav Bathla - Active Runner" class="modal-img">
+      </div>
+      <div class="modal-caption">Keshav Bathla &bull; Bangalore Half Marathon Finisher &bull; Active Runner</div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('photo-modal');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const closeBtn = document.getElementById('close-modal');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          }
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.close();
+        }
+      });
+    }
+  </script>
 </body>
 </html>

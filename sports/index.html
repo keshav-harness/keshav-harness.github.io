@@ -14,8 +14,15 @@
       <span class="current">Sports</span>
     </nav>
 
-    <h1>Sports &amp; Fitness</h1>
-    <p class="subtitle">Training logs, workout plans, and progressive performance tracking.</p>
+    <div class="hero-compact">
+      <button type="button" class="avatar-btn lightbox-trigger" aria-label="Open photo of Keshav Bathla" title="Click to view full photo">
+        <img src="../assets/avatar.jpg" alt="Keshav Bathla" class="avatar-img">
+      </button>
+      <div class="hero-compact-info">
+        <h1>Sports &amp; Fitness</h1>
+        <p class="subtitle">Training logs, workout plans, and progressive performance tracking.</p>
+      </div>
+    </div>
 
     <div class="card-grid">
       <a href="running/" class="card">
@@ -29,8 +36,55 @@
     </div>
 
     <div class="footer">
-      <p><a href="../">← Back to Home</a></p>
+      <p><a href="../">&larr; Back to Home</a></p>
     </div>
   </div>
+
+  <dialog id="photo-modal" class="lightbox-modal">
+    <div class="modal-wrapper">
+      <button type="button" class="modal-close-btn" id="close-modal" aria-label="Close photo preview">&times;</button>
+      <div class="modal-image-container">
+        <img src="../assets/keshav.jpg" alt="Keshav Bathla - Active Runner" class="modal-img">
+      </div>
+      <div class="modal-caption">Keshav Bathla &bull; Bangalore Half Marathon Finisher &bull; Active Runner</div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('photo-modal');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const closeBtn = document.getElementById('close-modal');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          }
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.close();
+        }
+      });
+    }
+  </script>
 </body>
 </html>

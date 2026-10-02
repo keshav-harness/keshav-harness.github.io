@@ -8,27 +8,48 @@
 </head>
 <body>
   <div class="container">
-    <h1>Keshav Bathla</h1>
-    <p class="subtitle">Runner. Builder. Tracking discipline, one kilometre and one rep at a time.</p>
+    <section class="hero-bento">
+      <div class="hero-content">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Active Runner &bull; Bengaluru</span>
+        </div>
+        <h1 class="hero-name">Keshav Bathla</h1>
+        <p class="hero-bio">Runner &amp; Builder. Tracking discipline, one kilometre and one rep at a time.</p>
+        <div class="hero-badges">
+          <span class="badge gold">🏅 21.75 km Finisher</span>
+          <span class="badge pink">⚡ 6:19 min/km PR</span>
+          <span class="badge emerald">🏋️ 67 kg PPL Split</span>
+        </div>
+      </div>
+
+      <div class="hero-athlete-card lightbox-trigger" role="button" tabindex="0" aria-label="Open high-resolution photo of Keshav Bathla">
+        <img src="assets/keshav.jpg" alt="Keshav Bathla - Active Runner" class="athlete-img">
+        <div class="athlete-card-overlay">
+          <span class="athlete-card-tag">🌅 Lake Run &bull; Bengaluru</span>
+          <span class="athlete-expand-pill">⤢ Tap to expand</span>
+        </div>
+      </div>
+    </section>
 
     <div class="stats-cockpit">
       <div class="stat-cell">
-        <div class="stat-value">485 km</div>
+        <div class="stat-value"><span class="stat-num">485</span> <span class="stat-unit">km</span></div>
         <div class="stat-label">RUNNING (2026)</div>
         <div class="stat-sub">65 runs logged</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-value">6:19</div>
-        <div class="stat-label">BEST PACE (/km)</div>
+        <div class="stat-value"><span class="stat-num">6:19</span> <span class="stat-unit">/km</span></div>
+        <div class="stat-label">BEST PACE</div>
         <div class="stat-sub">Personal Record (Aug)</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-value">21.75 km</div>
+        <div class="stat-value"><span class="stat-num">21.75</span> <span class="stat-unit">km</span></div>
         <div class="stat-label">HALF MARATHON</div>
         <div class="stat-sub">Wipro Bangalore Finisher</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-value">67 kg</div>
+        <div class="stat-value"><span class="stat-num">67</span> <span class="stat-unit">kg</span></div>
         <div class="stat-label">BODY &amp; STRENGTH</div>
         <div class="stat-sub">24 Gym Sessions (-2 kg)</div>
       </div>
@@ -54,5 +75,52 @@
       <p>Keshav Bathla &middot; 2026</p>
     </div>
   </div>
+
+  <dialog id="photo-modal" class="lightbox-modal">
+    <div class="modal-wrapper">
+      <button type="button" class="modal-close-btn" id="close-modal" aria-label="Close photo preview">&times;</button>
+      <div class="modal-image-container">
+        <img src="assets/keshav.jpg" alt="Keshav Bathla - Active Runner" class="modal-img">
+      </div>
+      <div class="modal-caption">Keshav Bathla &bull; Bangalore Half Marathon Finisher &bull; Active Runner</div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('photo-modal');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const closeBtn = document.getElementById('close-modal');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          }
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.close();
+        }
+      });
+    }
+  </script>
 </body>
 </html>

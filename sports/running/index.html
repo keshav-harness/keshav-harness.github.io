@@ -16,32 +16,39 @@
       <span class="current">Running</span>
     </nav>
 
-    <h1>Running</h1>
-    <p class="subtitle">Started: December 2021 &middot; Half Marathon Finisher &middot; Sub-6:30 Pace Cracked</p>
+    <div class="hero-compact">
+      <button type="button" class="avatar-btn lightbox-trigger" aria-label="Open photo of Keshav Bathla" title="Click to view full photo">
+        <img src="../../assets/avatar.jpg" alt="Keshav Bathla" class="avatar-img">
+      </button>
+      <div class="hero-compact-info">
+        <h1>Running</h1>
+        <p class="subtitle">Started: December 2021 &middot; Half Marathon Finisher &middot; Sub-6:30 Pace Cracked</p>
+      </div>
+    </div>
 
     <div class="stats-grid">
       <div class="stat">
-        <div class="stat-value">485 km</div>
+        <div class="stat-value"><span class="stat-num">485</span> <span class="stat-unit">km</span></div>
         <div class="stat-label">YTD 2026</div>
       </div>
       <div class="stat">
-        <div class="stat-value">65</div>
-        <div class="stat-label">Runs</div>
+        <div class="stat-value"><span class="stat-num">65</span></div>
+        <div class="stat-label">Runs Logged</div>
       </div>
       <div class="stat">
-        <div class="stat-value">6:19</div>
-        <div class="stat-label">Best Pace (min/km)</div>
+        <div class="stat-value"><span class="stat-num">6:19</span> <span class="stat-unit">min/km</span></div>
+        <div class="stat-label">Best Pace</div>
       </div>
       <div class="stat">
-        <div class="stat-value">7.91</div>
-        <div class="stat-label">Avg Pace (min/km)</div>
+        <div class="stat-value"><span class="stat-num">7.91</span> <span class="stat-unit">min/km</span></div>
+        <div class="stat-label">Avg Pace</div>
       </div>
       <div class="stat">
-        <div class="stat-value">21.75 km</div>
+        <div class="stat-value"><span class="stat-num">21.75</span> <span class="stat-unit">km</span></div>
         <div class="stat-label">Longest Run</div>
       </div>
       <div class="stat">
-        <div class="stat-value">12,376 m</div>
+        <div class="stat-value"><span class="stat-num">12,376</span> <span class="stat-unit">m</span></div>
         <div class="stat-label">Total Elevation</div>
       </div>
     </div>
@@ -143,8 +150,55 @@
     </div>
 
     <div class="footer">
-      <p><a href="../">← Back to Sports</a></p>
+      <p><a href="../">&larr; Back to Sports</a></p>
     </div>
   </div>
+
+  <dialog id="photo-modal" class="lightbox-modal">
+    <div class="modal-wrapper">
+      <button type="button" class="modal-close-btn" id="close-modal" aria-label="Close photo preview">&times;</button>
+      <div class="modal-image-container">
+        <img src="../../assets/keshav.jpg" alt="Keshav Bathla - Active Runner" class="modal-img">
+      </div>
+      <div class="modal-caption">Keshav Bathla &bull; Bangalore Half Marathon Finisher &bull; Active Runner</div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('photo-modal');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const closeBtn = document.getElementById('close-modal');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          }
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.close();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
